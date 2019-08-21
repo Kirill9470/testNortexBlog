@@ -1,0 +1,11 @@
+<div>
+  <h1>Просмотр поста <%= @post.title %></h1>
+  <%= form_for [@user, @post, Evaluation.new], url: user_post_evaluations_path(@user, @post, format: :json), method: :post do |f| %>
+    <p>Оценить пост: <%= f.select :value, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]] %>
+      <%= f.submit 'Оценить' %> | рейтинг: <%= @post.score %>
+    </p>
+  <% end %>
+  <p>
+    <%= @post.description %>
+  </p>
+</div>
