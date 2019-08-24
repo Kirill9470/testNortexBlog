@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Конфигурация
 
-Things you may want to cover:
+* Ruby version = 2.4.1
 
-* Ruby version
+* Rails version = 5.3.2
 
-* System dependencies
+* PostgreSql = 11.3
 
-* Configuration
+Экшены
 
-* Database creation
+1. /users/#{user_id}/posts/new - форма создания поста
+2. /users/#{user_id}/posts/#{post_id} - просмотр поста, оттуда производиться оценка
+3. /users/#{user_id}/posts/#{post_id}/evaluations(method: :post, params[:evaluation][:value]) - оценка поста
+4. /users - список пользователей, присутсвуют кнопки для получения адресов и списка постов со средней оценкой
+5. /users/get_posts_top(method: :get, params[:evaluation], params[:limit]) - список N постов со средней оценкой
+6. /users/get_ip(method: :post) - получить список апи + массив юзеров
 
-* Database initialization
+Спеки
 
-* How to run the test suite
+По спекам немного не доделал, там просто проверка досутупности url и просто то что экшены возвращают статус 200
 
-* Services (job queues, cache servers, search engines, etc.)
+Запуск тестов 
 
-* Deployment instructions
 
-* ...
+* bundle exec rspec
+
+

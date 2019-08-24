@@ -1,4 +1,4 @@
-class EvaluationsController < ApplicationController
+class Users::Posts::EvaluationsController < ApplicationController
   before_action :set_user
   before_action :set_post
 
