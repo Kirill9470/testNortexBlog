@@ -6,4 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-SeedService.create
+SeedModule.create_users(100)
+SeedModule.create_posts(200000, 500) # pa_max_count должно быть кратным count!

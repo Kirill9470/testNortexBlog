@@ -2,21 +2,26 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :evaluations
   accepts_nested_attributes_for :evaluations
+  attr_accessor :authors_login # При создании поста нужно передавать логин автора
 
   validates :title, :description, presence: true
+  before_validation :search_user
 
-  def self.get_top(evaluation, limit)
-    select(:title, :description).where(score: evaluation).limit(limit) if limit.present?
-  end
-
-  def self.qwerty
-    includes(:user).find_by_sql("select ip_addreess, count(distinct user_id) as count_user from posts group by ip_addreess")
+  def self.get_top_on_average_rating(evaluation, limit) # топ по среднему рейтингу
+    if limit.present? && evaluation.present?
+      select(:title, :description).where(score: evaluation).limit(limit) if limit.present?
+    else
+      all
+    end
   end
 
   private
 
-  def q
-    UserService.add_ip_address(self.user, self.ip_addreess)
+  def search_user #поиск пользователя или его создание
+    if self.user_id.blank?
+      user = User.find_or_create_by(login: self.authors_login)
+      self.user_id = user.id
+    end
   end
 
 end

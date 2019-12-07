@@ -10,6 +10,7 @@ class AddModelInProject < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :description
       t.string :ip_addreess
+      t.integer :score
       t.timestamps
     end
 

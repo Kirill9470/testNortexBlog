@@ -8,18 +8,18 @@ default: &default
 
 development:
   <<: *default
-  database: test
-  username: gp_emulator_user
+  database: nortex_test_db
+  username: api_db_user
   password: P@ssw0rd
 
 test:
   <<: *default
-  database: test
-  username: gp_emulator_user
+  database: nortex_test_db
+  username: api_db_user
   password: P@ssw0rd
 
 production:
   <<: *default
-  database: test
-  username: gp_emulator_user
+  database: nortex_test_db
+  username: api_db_user
   password: P@ssw0rd
